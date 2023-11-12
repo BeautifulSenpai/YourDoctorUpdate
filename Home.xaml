@@ -1,0 +1,103 @@
+﻿<Window x:Class="YourDoctor.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourDoctor"
+        mc:Ignorable="d"
+        Title="Home" 
+        Height="720" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        FontFamily="Poppins"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="10" Background="{DynamicResource PrimaryBackgroundColor}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Start: GridColumn Left -->
+            <Border CornerRadius="10 0 0 10"
+                    Padding="10"
+                    Background="{DynamicResource SecundaryBackgroundColor}">
+                <Grid x:Name="gridMenu">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="130"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Image Source="/Assets/Icons/logo.png" Stretch="Fill" Height="36" Width="36" VerticalAlignment="Center" Margin="10 0 0 0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <Label Content="Твой доктор" Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalContentAlignment="Left" Margin="5 0 0 0" Width="178"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.RowSpan="3">
+                        <RadioButton x:Name="rdProducts" Content="Товары" Style="{DynamicResource MenuRadioButtonStyle}" Margin="0 30 0 0" Click="rdProducts_Click"/>
+                        <RadioButton x:Name="rdCustomers" Content="Клиенты" Style="{DynamicResource MenuRadioButtonStyle}" Margin="0 1 0 1" Click="rdCustomers_Click"/>
+                        <RadioButton x:Name="rdOrders" Content="Заказы" Style="{DynamicResource MenuRadioButtonStyle}" Click="rdOrders_Click"/>
+                        <RadioButton x:Name="rdOrderItems" Content="Состав заказов" Style="{DynamicResource MenuRadioButtonStyle}" Margin="0 1 0 1" Click="rdOrderItems_Click"/>
+                        <RadioButton x:Name="rdSuppliers" Content="Поставщики" Style="{DynamicResource MenuRadioButtonStyle}" Click="rdSuppliers_Click"/>
+                        <RadioButton x:Name="rdSupply" Content="Поставки" Style="{DynamicResource MenuRadioButtonStyle}"     Click="rdSupply_Click"/>
+                        <RadioButton x:Name="rdPrescriptionMedications" Content="Лекарства по рецепту" Style="{DynamicResource MenuRadioButtonStyle}" Click="rdPrescriptionMedications_Click"/>
+                        <RadioButton x:Name="rdReviews" Content="Отзывы" Style="{DynamicResource MenuRadioButtonStyle}"     Click="rdReviews_Click"/>
+                        <RadioButton x:Name="btnAddEmployee" Content="Добавить сотрудника" Style="{DynamicResource MenuRadioButtonStyle}" Foreground="Blue" Margin="0 20 0 1" Click="btnAddEmployee_Click"/>
+                        <RadioButton x:Name="btnSetSalary" Content="Назначить зарплату" Style="{DynamicResource MenuRadioButtonStyle}" Foreground="Blue" Margin="0 0 0 1" Click="btnSetSalary_Click"/>
+                        <TextBlock Text="Выход из системы"  MouseLeftButtonDown="btnLogout_Click" Margin="40" FontSize="18" Foreground="Red" HorizontalAlignment="Center"/>
+                       
+
+
+                    </StackPanel>
+
+
+
+                </Grid>
+            </Border>
+            <!-- End: GridColumn Left -->
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!-- Start: Button Close | Restore | Minimize -->
+                <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
+                    <Button x:Name="btnRestore" Margin="5 0" Click="btnRestore_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
+                </StackPanel>
+                <!-- End: Button Close | Restore | Minimize -->
+
+                <!-- Start: Frame Container -->
+                <Border Grid.Row="1" CornerRadius="0 0 6 0" Background="Transparent">
+                    <Frame x:Name="frameContent" NavigationUIVisibility="Hidden" Margin="10"/>
+                </Border>
+                <!-- End: Frame Container -->
+
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>

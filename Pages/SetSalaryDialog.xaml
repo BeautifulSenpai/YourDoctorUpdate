@@ -1,0 +1,38 @@
+﻿<Window x:Class="YourDoctor.Pages.SetSalaryDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourDoctor.Pages"
+        mc:Ignorable="d"
+        Title="Назначить зарплату и премию" Height="200" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown">
+
+    <Grid>
+        <Border CornerRadius="10" Background="White">
+            <Grid VerticalAlignment="Top" HorizontalAlignment="Center">
+                <TextBlock Text="Назначить зарплату и премию" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="0,10,0,0"/>
+                <Label Content="Зарплата:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,40,0,0"/>
+                <TextBox x:Name="txtSalary" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="140,40,0,0" Width="150"/>
+
+                <Label Content="Премия:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,70,0,0"/>
+                <TextBox x:Name="txtBonus" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="140,70,0,0" Width="150"/>
+
+                <Label Content="Выбор сотрудника:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,100,0,0"/>
+                <ComboBox x:Name="cboUsers" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="140,100,0,0" Width="150"/>
+            </Grid>
+        </Border>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,0,30">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Назначить" Width="75" Margin="0,0,10,0" Click="btnSetSalary_Click" Background="Green" Foreground="White"/>
+                <Button Content="Отмена" Width="75" Click="btnCancel_Click" Background="Red" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
